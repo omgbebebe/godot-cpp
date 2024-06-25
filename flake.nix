@@ -22,6 +22,8 @@
         # system.
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
+        packages.template_release = pkgs.callPackage ./package.nix { withTarget = "template_release"; };
+        packages.template_debug = pkgs.callPackage ./package.nix { withTarget = "template_debug"; };
         packages.default = pkgs.callPackage ./package.nix { };
 
         devShells.default = config.packages.default;
