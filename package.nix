@@ -59,7 +59,7 @@ stdenv.mkDerivation {
     cp SConstruct.gdextension.example $out/
 
     mkdir -p $dev/lib/pkgconfig
-    cp pc.in $dev/lib/pkgconfig/libgodot-cpp.pc
+    cp pc.in $dev/lib/pkgconfig/godot-cpp.pc
   '';
 
   meta = with lib; {
@@ -67,7 +67,7 @@ stdenv.mkDerivation {
     description = "C++ bindings for the Godot script API";
     license = licenses.mit;
     platforms = [ "i686-linux" "x86_64-linux" "aarch64-linux" ];
-    pkgConfigModules = [ "libgodot-cpp" ];
+    pkgConfigModules = [ "godot-cpp" ];
     maintainers = with maintainers; [ omgbebebe ];
   };
 }
