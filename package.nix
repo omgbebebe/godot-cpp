@@ -59,7 +59,7 @@ stdenv.mkDerivation {
     cp SConstruct.gdextension.example $out/
 
     mkdir -p $dev/lib/pkgconfig
-    cp pc.in $dev/lib/pkgconfig/libgodot-cpp
+    cp pc.in $dev/lib/pkgconfig/libgodot-cpp.pc
   '';
 
   meta = with lib; {
