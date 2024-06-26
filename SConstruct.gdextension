@@ -80,4 +80,4 @@ env.Append(CPPPATH=["src/", "godot-cpp/include/", "godot-cpp/gen/include/", "god
 env.Append(LIBS= [ "godot-cpp.linux.template_{}.x86_64.a".format(env["mode"]) ])
 sources = Glob("src/*.cpp")
 
-return env
+Return("env")
