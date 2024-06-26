@@ -198,3 +198,6 @@ venv
 
 # Direnv
 .direnv/
+
+# Nix specific
+result

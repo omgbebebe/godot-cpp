@@ -25,6 +25,7 @@ stdenv.mkDerivation {
     "binding_generator.py"
     "CMakeLists.txt"
     "SConstruct"
+    "SConstruct.gdextension"
     "SConstruct.gdextension.example"
   ];
 
@@ -46,6 +47,7 @@ stdenv.mkDerivation {
     cp -av include $out/
     cp -av gdextension $out/
     cp -av bin $out/
+    cp SConstruct.gdextension $out/SConstruct
     cp SConstruct.gdextension.example $out/
   '';
 
