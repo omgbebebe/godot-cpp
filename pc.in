@@ -1,0 +1,9 @@
+includedir=@dev@
+libdir=@dev@
+target=@target@
+
+Name: godot-cpp
+Description: C++ bindings for the Godot script API
+Version: 1.0.0
+Cflags: -I${includedir} -I${includedir}/include/ -I${includedir}/gen/include/ -I${includedir}/gdextension/
+Libs: -L${libdir} -lgodot-cpp.linux.${target}.x86_64.a

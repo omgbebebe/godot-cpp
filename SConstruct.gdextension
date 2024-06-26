@@ -75,9 +75,9 @@ env.Append(CPPDEFINES=["LINUX_ENABLED", "UNIX_ENABLED"])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env["ENV"] = os.environ
-#env.ParseConfig("pkg-config dbus-1 --cflags --libs")
-env.Append(CPPPATH=["src/", "godot-cpp/include/", "godot-cpp/gen/include/", "godot-cpp/gdextension/" ])
-env.Append(LIBS= [ "godot-cpp.linux.template_{}.x86_64.a".format(env["mode"]) ])
+env.ParseConfig("pkg-config godot-cpp --cflags --libs")
+#env.Append(CPPPATH=["src/", "godot-cpp/include/", "godot-cpp/gen/include/", "godot-cpp/gdextension/" ])
+#env.Append(LIBS= [ "godot-cpp.linux.template_{}.x86_64.a".format(env["mode"]) ])
 sources = Glob("src/*.cpp")
 
 Return("env")

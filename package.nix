@@ -27,6 +27,7 @@ stdenv.mkDerivation {
     "SConstruct"
     "SConstruct.gdextension"
     "SConstruct.gdextension.example"
+    "pc.in"
   ];
 
   nativeBuildInputs = [ scons ];
@@ -39,16 +40,26 @@ stdenv.mkDerivation {
     precision = withPrecision;
   };
 
-  outputs = [ "out" ];
+  validatePkgConfig = true;
+
+  outputs = [ "out" "dev" ];
+
+  postBuild = ''
+    export target="${withTarget}"
+    substituteAllInPlace pc.in
+  '';
 
   installPhase = ''
-    mkdir -p "$out"
-    cp -av gen $out/
-    cp -av include $out/
-    cp -av gdextension $out/
-    cp -av bin $out/
+    mkdir -p $out $dev $lib
+    cp -av gen $dev/
+    cp -av include $dev/
+    cp -av gdextension $dev/
+    cp -av bin/* $dev/
     cp SConstruct.gdextension $out/SConstruct
     cp SConstruct.gdextension.example $out/
+
+    mkdir -p $dev/lib/pkgconfig
+    cp pc.in $dev/lib/pkgconfig/libgodot-cpp
   '';
 
   meta = with lib; {
@@ -56,6 +67,7 @@ stdenv.mkDerivation {
     description = "C++ bindings for the Godot script API";
     license = licenses.mit;
     platforms = [ "i686-linux" "x86_64-linux" "aarch64-linux" ];
+    pkgConfigModules = [ "libgodot-cpp" ];
     maintainers = with maintainers; [ omgbebebe ];
   };
 }
